@@ -1,3 +1,69 @@
+// Bibliotecas
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h> // Para strcspn()
+
+// Constantes para quantidade maxima
+#define MAX_NOME 30
+#define MAX_COR 10
+#define MAX_TERRITORIO 5
+
+struct Territorio {
+    char nome[MAX_NOME];
+    char cor[10];
+    int tropas;
+};
+
+// Função para limpar o Buffer da entrada de dados apos o '\n'
+void limparBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+int main() {
+    struct Territorio territorio[MAX_TERRITORIO];
+    int totalTerritorio = 0;
+
+    printf("==================================\n\n");
+    do {
+        printf("--- Cadastrando territorio %d ---\n", totalTerritorio + 1);
+
+        printf("Nome do territorio: ");
+        fgets(territorio[totalTerritorio].nome, MAX_NOME, stdin);
+
+        printf("Cor do exercito: ");
+        fgets(territorio[totalTerritorio].cor, MAX_COR, stdin);
+
+        printf("Numero de tropas: ");
+        scanf("%d", &territorio[totalTerritorio].tropas);
+
+        printf("");
+
+        limparBuffer();
+
+        totalTerritorio++;
+
+    } while (totalTerritorio < MAX_TERRITORIO);
+    
+
+
+    printf("Cadastro inicial concluido com sucesso!\n\n");
+
+    printf("==================================\n");
+    printf("   MAPA DO MUNDO - ESTADO ATUAL   \n");
+    printf("==================================\n");
+
+    for(int i = 0; i < MAX_TERRITORIO; i++) {
+        printf("TERRITORIO %d:\n", i);
+        printf(" - Nome: %s\n", territorio[i].nome);
+        printf(" - Dominado por: %s\n", territorio[i].cor);
+        printf(" - Tropas: %d\n\n", territorio[i].tropas);
+    }
+
+    return 0;
+}
+
+
 // ============================================================================
 //         PROJETO WAR ESTRUTURADO - DESAFIO DE CÓDIGO
 // ============================================================================
@@ -31,8 +97,8 @@
 
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
-int main() {
-    // 1. Configuração Inicial (Setup):
+
+// 1. Configuração Inicial (Setup):
     // - Define o locale para português.
     // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
     // - Aloca a memória para o mapa do mundo e verifica se a alocação foi bem-sucedida.
@@ -50,9 +116,6 @@ int main() {
 
     // 3. Limpeza:
     // - Ao final do jogo, libera a memória alocada para o mapa para evitar vazamentos de memória.
-
-    return 0;
-}
 
 // --- Implementação das Funções ---
 
