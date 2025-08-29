@@ -37,7 +37,7 @@ int main() {
         printf("Numero de tropas: ");
         scanf("%d", &territorio[totalTerritorio].tropas);
 
-        printf("");
+        printf("\n");
 
         limparBuffer();
 
@@ -51,12 +51,12 @@ int main() {
 
     printf("==================================\n");
     printf("   MAPA DO MUNDO - ESTADO ATUAL   \n");
-    printf("==================================\n");
+    printf("==================================\n\n");
 
     for(int i = 0; i < MAX_TERRITORIO; i++) {
-        printf("TERRITORIO %d:\n", i);
-        printf(" - Nome: %s\n", territorio[i].nome);
-        printf(" - Dominado por: %s\n", territorio[i].cor);
+        printf("TERRITORIO %d:\n", i + 1);
+        printf(" - Nome: %s", territorio[i].nome);
+        printf(" - Dominado por: %s", territorio[i].cor);
         printf(" - Tropas: %d\n\n", territorio[i].tropas);
     }
 
